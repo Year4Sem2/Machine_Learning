@@ -1,0 +1,44 @@
+# Use an appropriate base image
+FROM python:3.8-slim
+
+# Install dependencies for scikit-surprise and Spark
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     build-essential \
+#     python3-dev \
+#     libatlas-base-dev \
+#     curl \
+#     default-jre-headless && \
+#     rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    python3-dev \
+    libatlas-base-dev \
+    curl \
+    default-jdk \
+    procps && \
+    rm -rf /var/lib/apt/lists/*
+
+
+
+# Set environment variables for Java and Spark
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Download and install Apache Spark
+ENV SPARK_VERSION=3.4.1
+RUN curl -o spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz" && \
+    tar -xzf spark.tgz -C /opt && \
+    mv /opt/spark-${SPARK_VERSION}-bin-hadoop3 /opt/spark && \
+    rm spark.tgz
+
+# Set environment variables for Spark
+ENV SPARK_HOME=/opt/spark
+ENV PATH=$SPARK_HOME/bin:$PATH
+
+# Install Python dependencies
+RUN pip install --upgrade pip
+RUN pip install numpy
+RUN pip install surprise
+RUN pip install pyspark
+
