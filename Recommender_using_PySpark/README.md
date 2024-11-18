@@ -4,9 +4,12 @@ This repository contains the implementation of ROSMO, a Regularized One-Step Mod
 
 ---
 
-## Installation
+## Usage
 
-Please follow the [installation guide](link-to-installation-guide).
+The execution of this program relies on the usage of Docker containers so a dockerfile is necessary.
+
+1. **Create an image using the dockerfile located inside the repository.**
+2. **Run the container using the image you have just created in Step 1.**
 
 ---
 
