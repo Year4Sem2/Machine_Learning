@@ -1,6 +1,8 @@
 # Introduction
 
-This repository contains the implementation of ROSMO, a Regularized One-Step Model-based algorithm for Offline-RL, introduced in our paper *"Efficient Offline Policy Optimization with a Learned Model"*. We provide the training codes for both Atari and BSuite experiments, and have made the reproduced results on `Atari MsPacman` publicly available at [W&B](https://wandb.ai).
+This repository contains the implementation of a recommendation system using the Alternating Least Squares (ALS) algorithm with PySpark (a framework for big data processing). The ALS algorithm is a collaborative filtering technique commonly used in recommendation systems. It predicts user preferences for items (like movies, products, or music) by analyzing patterns in past user-item interactions (e.g., ratings, clicks, or purchases).
+
+The recommendation system was tested on two different sizes of the MovieLens dataset: a smaller dataset with approximately 100,000 entries and a larger dataset with 32,000,000 entries. The results show that ALS algorithm perform better under a much larger size of dataset.
 
 ---
 
