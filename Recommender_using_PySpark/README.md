@@ -11,5 +11,5 @@ The execution of this program relies on the usage of Docker containers so a dock
 1. **Create an image using the dockerfile located inside the repository.**
 2. **Run the container using the image you have just created in Step 1.**
 3. **Inside the Docker container terminal, type in 'cd /app'.**
-4. **Finally type 'python SparkALS.py'/'python SparkALS-20m.py' depending on which python script the user wants to run.**
+4. **Finally type 'python SparkALS.py'/'python SparkALS-32m.py' depending on which python script the user wants to run.**
 
