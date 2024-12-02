@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 
 load_dotenv()
 # api_key = os.getenv("api_key")
-api_key = "AIzaSyA3Z9BJ67ZESXjtc5y2WWWbSfVRR3ZumlM"
+api_key = "<your api key>"
 genai.configure(api_key=api_key)
 
 def format_image_inputs(data):
