@@ -8,7 +8,7 @@ The recommendation system was tested on two different sizes of the MovieLens dat
 
 ## Usage
 
-The execution of this program relies on the usage of Docker containers so a dockerfile is necessary. For large dataset, please go to https://grouplens.org/datasets/movielens/ to gain access to the dataset. Download it as a zip file and subsequently extract it on the same level as the 'ml-latest-small' folder.
+Make sure that your path is currently at the same level as 'app.py' file and 'docker-compose.yml' file. Make sure that your Docker engine is running and execute the following bash command.
 
 ```bash
 docker-compose up --build
