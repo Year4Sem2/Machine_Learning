@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kafka Real-Time Dashboard</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const result = await response.json();
+            document.getElementById("output").innerText = JSON.stringify(result.data);
+        }
+
+        setInterval(fetchData, 500); // Refresh every 3 seconds
+    </script>
+</head>
+<body>
+    <h1>Truck Real-Time Data</h1>
+    <pre id="output">Loading...</pre>
+</body>
+</html>
