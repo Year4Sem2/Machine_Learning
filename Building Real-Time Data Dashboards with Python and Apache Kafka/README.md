@@ -4,7 +4,7 @@ This repository contains the implementation of a real-time voting system using P
 
 The project focuses on ingesting streaming data, processing it in real-time, and visualizing the results through an interactive pie chart.
 
-## Key Components of the Project**:
+## Key Components of the Project:
 
 - **Data Ingestion**: Utilizes Python scripts to simulate or collect real-time data streams.
 
