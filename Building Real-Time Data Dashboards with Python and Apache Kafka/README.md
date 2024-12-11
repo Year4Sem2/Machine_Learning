@@ -13,5 +13,5 @@ Make sure that your path is currently at the same level as 'app.py' file and 'do
 
 ```bash
 docker-compose up --build
-
+```
 Afterwards
