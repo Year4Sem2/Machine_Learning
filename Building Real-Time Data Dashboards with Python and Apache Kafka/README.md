@@ -14,4 +14,4 @@ Make sure that your path is currently at the same level as 'app.py' file and 'do
 ```bash
 docker-compose up --build
 ```
-Afterwards, you can access the application in your browser at `http://localhost:5000`.
+Afterwards, you can access the application in your browser at `http://localhost:5000`. Go to `http://localhost:5000/data-page` to view the dynamic pie chart!
