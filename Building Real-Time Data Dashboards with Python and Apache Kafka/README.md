@@ -4,6 +4,7 @@ This repository contains the implementation of a recommendation system using the
 
 The recommendation system was tested on two different sizes of the MovieLens dataset: a smaller dataset with approximately 100,000 entries and a larger dataset with 32,000,000 entries. The results show that ALS algorithm perform better under a much larger size of dataset.
 
+![Flowchart](Voting_System.jpg)
 ---
 
 ## Usage
