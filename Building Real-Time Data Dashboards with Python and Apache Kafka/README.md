@@ -1,8 +1,8 @@
 # Introduction
 
-This repository contains the implementation of a recommendation system using the Alternating Least Squares (ALS) algorithm with PySpark (a framework for big data processing). The ALS algorithm is a collaborative filtering technique commonly used in recommendation systems. It predicts user preferences for items (like movies, products, or music) by analyzing patterns in past user-item interactions (e.g., ratings, clicks, or purchases).
+This repository contains the implementation of a real-time voting system using Python and Apache Kafka. The context is assuming there are 3 parties: PAP, WP and SDP. The total number of voters is 1000. These 1000 voters are randomly voting for the respective parties.
 
-The recommendation system was tested on two different sizes of the MovieLens dataset: a smaller dataset with approximately 100,000 entries and a larger dataset with 32,000,000 entries. The results show that ALS algorithm perform better under a much larger size of dataset.
+The end result is that users would be able to access a local web server and observe the changes in the votes for the respective parties live on stream. They can also observe the dynamic pie chart showing the change in votes over time among the 3 parties. The figure below shows an instance of the dynamic pie chart!
 
 ![Flowchart](Voting_System.jpg)
 ---
