@@ -1,0 +1,104 @@
+<!-- public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express Book Library</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { margin: 5px; }
+    ul { list-style-type: none; padding-left: 0; }
+  </style>
+</head>
+<body>
+  <h1>📚 Express Book Library</h1>
+
+  <h2>Add New Book</h2>
+  <form id="bookForm">
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="author" placeholder="Author" required>
+    <button type="submit">Add Book</button>
+  </form>
+
+  <h2>All Books</h2>
+  <button id="toggleBtn">Load Books</button>
+  <ul id="bookList" style="display: none;"></ul>
+
+  <script>
+    const form = document.getElementById('bookForm');
+    const bookList = document.getElementById('bookList');
+    const toggleBtn = document.getElementById('toggleBtn');
+    let isShown = false;
+
+    // Load books from server
+    async function loadBooks() {
+      const res = await fetch('/books');
+      const books = await res.json();
+      bookList.innerHTML = '';
+      books.forEach(b => {
+        const li = document.createElement('li');
+        // li.textContent = `#${b.id} - "${b.title}" by ${b.author}`;
+        li.innerHTML = `#${b.id} - "${b.title}" by ${b.author} ` +
+          `<button onclick="deleteBook(${b.id})">❌ Delete</button>` +
+          `<button onclick="editAuthor(${b.id}, '${b.author}')">✏️ Edit Author</button>`;
+        bookList.appendChild(li);
+      });
+    }
+
+    // Toggle book list visibility
+    toggleBtn.addEventListener('click', async () => {
+      if (!isShown) {
+        await loadBooks();
+        bookList.style.display = 'block';
+        toggleBtn.textContent = 'Hide Books';
+      } else {
+        bookList.style.display = 'none';
+        toggleBtn.textContent = 'Load Books';
+      }
+      isShown = !isShown;
+    });
+
+    // Add new book
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const author = document.getElementById('author').value.trim();
+
+      if (!title || !author) return;
+
+      await fetch('/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, author })
+      });
+
+      form.reset();
+
+      if (isShown) {
+        await loadBooks();
+      }
+    });
+
+    async function deleteBook(id) {
+      await fetch(`/book/${id}`, { method: 'DELETE' });
+      if (isShown) await loadBooks();
+    }
+
+    async function editAuthor(id, currentAuthor) {
+      const newAuthor = prompt("Enter new author's name:", currentAuthor);
+      if (!newAuthor || newAuthor === currentAuthor) return;
+
+      await fetch(`/book/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ author: newAuthor })
+      });
+
+      if (isShown) await loadBooks();
+    }
+  </script>
+</body>
+</html>
+
